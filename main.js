@@ -149,7 +149,6 @@
 	};
 
 var makeSteal = function(System){
-	
 		
 	var configDeferred,
 		devDeferred,
