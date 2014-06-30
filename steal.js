@@ -3157,8 +3157,9 @@ function register(loader) {
         return getModule(entry.normalizedDeps[i], loader);
       }
     }, entry.module['default'], moduleName);
-    
-    if (output)
+    if ( output && output.__esModule )
+      entry.module = output;
+    else if (output)
       entry.module['default'] = output;
   }
 
@@ -5357,6 +5358,5 @@ if (typeof System !== "undefined") {
 		module.exports = global.steal;
 		global.steal.addSteal = addSteal;
 	}
-    
     
 })(typeof window == "undefined" ? global : window);

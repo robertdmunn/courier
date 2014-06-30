@@ -646,5 +646,4 @@ if (typeof System !== "undefined") {
 		global.steal.addSteal = addSteal;
 	}
     
-    
 })(typeof window == "undefined" ? global : window);
