@@ -190,6 +190,7 @@ var makeSteal = function(System){
 	steal.joinURIs = joinURIs;
 	steal.normalize = normalize;
 
+
 	// System.ext = {bar: "path/to/bar"}
 	// foo.bar! -> foo.bar!path/to/bar
 	var addExt = function(loader) {

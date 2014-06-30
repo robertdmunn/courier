@@ -4276,12 +4276,14 @@ function plugins(loader) {
   loader.instantiate = function(load) {
     var loader = this;
     if (load.metadata.plugin && load.metadata.plugin.instantiate)
-      return Promise.resolve(load.metadata.plugin.instantiate.call(loader, load)).then(function(result) {
-
-        load.metadata.format = 'defined';
-        load.metadata.execute = function() {
+       return Promise.resolve(load.metadata.plugin.instantiate.call(loader, load)).then(function(result) {
+        if (result) {
+          // load.metadata.format = 'defined';
+          // load.metadata.execute = function() {
+          //   return result;
+          // };
           return result;
-        };
+        }
         return loaderInstantiate.call(loader, load);
       });
     else if (load.metadata.plugin && load.metadata.plugin.build === false) {
@@ -4902,6 +4904,7 @@ var makeSteal = function(System){
 	steal.parseURI = parseURI;
 	steal.joinURIs = joinURIs;
 	steal.normalize = normalize;
+
 
 	// System.ext = {bar: "path/to/bar"}
 	// foo.bar! -> foo.bar!path/to/bar
