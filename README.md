@@ -2,8 +2,8 @@
 
 CourierJS is an ES6, AMD, CommonJS, and courier client-side loader. 
 
-#CourierJS is designed
-#to simplify dependency management while being extremely powerful and flexible.
+CourierJS is designed
+to simplify dependency management while being extremely powerful and flexible.
 
 Courier is a fork of [StealJS](https://github.com/bitovi/steal), which builds from [SystemJS](https://github.com/systemjs/systemjs) and 
 [ES6ModuleLoader](https://github.com/ModuleLoader/es6-module-loader) and adds:
