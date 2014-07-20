@@ -6,17 +6,12 @@ CourierJS is designed
 to simplify dependency management while being extremely powerful and flexible.
 
 Courier is a fork of [StealJS](https://github.com/bitovi/steal), which builds from [SystemJS](https://github.com/systemjs/systemjs) and 
-[ES6ModuleLoader](https://github.com/ModuleLoader/es6-module-loader) and adds:
+[ES6ModuleLoader](https://github.com/ModuleLoader/es6-module-loader).
 
- - global configuration
- - css and less support
- - plugin extension mapping _(upcoming)_
- - production builds with [courier-tools](https://github.com/bitovi/courier-tools)
+CourierJS supports IE8+ with AMD, CommonJS, and IE9+ for ES6 syntax.
 
-But it's __killer__ feature - progressively loaded apps that balance caching and the 
-number of script requests.
-
-CourierJS supports IE8+ with AMD, CommonJS, and Courier syntax and IE9+ for ES6 syntax.
+#Why Courier?
+Because it isn't stealing.
 
 ## Use
 
