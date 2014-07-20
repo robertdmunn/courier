@@ -1,6 +1,6 @@
-steal.config({
+courier.config({
 	paths: {
-		"steal/*" : "../*.js",
+		"courier/*" : "../*.js",
 		"@traceur": "traceur/traceur.js"
 	}
 });

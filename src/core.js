@@ -1,18 +1,18 @@
-var makeSteal = function(System){
+var makeCourier = function(System){
 	
 		
 	var configDeferred,
 		devDeferred,
 		appDeferred;
 
-	var steal = function(){
+	var courier = function(){
 		var args = arguments;
 		var afterConfig = function(){
 			var imports = [];
 			var factory;
 			each(args, function(arg){
 				if(isString(arg)) {
-					imports.push( steal.System['import']( normalize(arg) ) );
+					imports.push( courier.System['import']( normalize(arg) ) );
 				} else if(typeof arg === "function") {
 					factory = arg;
 				}
@@ -27,7 +27,7 @@ var makeSteal = function(System){
 				return modules;
 			}
 		};
-		if(steal.config().env === "production") {
+		if(courier.config().env === "production") {
 			return afterConfig();
 		} else {
 			// wait until the config has loaded
@@ -36,7 +36,7 @@ var makeSteal = function(System){
 		
 	};
 	
-	steal.System = System;
-	steal.parseURI = parseURI;
-	steal.joinURIs = joinURIs;
-	steal.normalize = normalize;
+	courier.System = System;
+	courier.parseURI = parseURI;
+	courier.joinURIs = joinURIs;
+	courier.normalize = normalize;

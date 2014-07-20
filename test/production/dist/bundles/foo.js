@@ -1,4 +1,4 @@
-steal.config({
+courier.config({
 	meta: {
 		"jquerty": {
 			exports: "jQuerty"

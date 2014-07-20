@@ -17,13 +17,13 @@ module.exports = function (grunt) {
           'bower_components/systemjs/dist/system.js',
           'src/start.js',
           'src/normalize.js',
-          'src/core.js',     	// starts makeSteal
+          'src/core.js',     	// starts makeCourier
           'src/system-extension-ext.js',
           'src/system-extension-forward-slash.js',
           'src/config.js',
           'src/startup.js',
-          'src/make-steal-end.js', // ends makeSteal
-          'src/system-format-steal.js',
+          'src/make-courier-end.js', // ends makeCourier
+          'src/system-format-courier.js',
           'src/end.js'
         ],
         dest: '<%= pkg.name %>.js'
@@ -32,22 +32,22 @@ module.exports = function (grunt) {
         src: [
           'src/system-format-start.js',
           'src/normalize.js',
-          'src/system-format-steal.js',
+          'src/system-format-courier.js',
           'src/system-format-end.js'
         ],
-        dest: 'system-format-steal.js'
+        dest: 'system-format-courier.js'
       },
       nodeMain: {
 		src: [
           'src/start.js',
           'src/normalize.js',
-          'src/core.js',     	// starts makeSteal
+          'src/core.js',     	// starts makeCourier
           'src/system-extension-ext.js',
           'src/system-extension-forward-slash.js',
           'src/config.js',
           'src/startup.js',
-          'src/make-steal-end.js', // ends makeSteal
-          'src/system-format-steal.js',
+          'src/make-courier-end.js', // ends makeCourier
+          'src/system-format-courier.js',
           'src/end.js'
         ],
         dest: 'main.js'
@@ -73,8 +73,8 @@ module.exports = function (grunt) {
       toTest: {
         files: [
           {expand: true, src: ['<%= pkg.name %>.js', '<%= pkg.name %>.production.js', 'dev.js'], dest: 'test/', filter: 'isFile'},
-          {expand: true, src: ['<%= pkg.name %>.js', '<%= pkg.name %>.production.js', 'dev.js'], dest: 'test/steal/', filter: 'isFile'},
-          {expand: true, src: ['<%= pkg.name %>.js', '<%= pkg.name %>.production.js', 'dev.js'], dest: 'test/bower_components/steal/', filter: 'isFile'},
+          {expand: true, src: ['<%= pkg.name %>.js', '<%= pkg.name %>.production.js', 'dev.js'], dest: 'test/courier/', filter: 'isFile'},
+          {expand: true, src: ['<%= pkg.name %>.js', '<%= pkg.name %>.production.js', 'dev.js'], dest: 'test/bower_components/courier/', filter: 'isFile'},
           {expand: true, cwd: 'bower_components/traceur/', src: ['*'], dest: 'test/bower_components/traceur/', filter: 'isFile'}
         ]
       }

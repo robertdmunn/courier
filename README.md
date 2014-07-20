@@ -1,23 +1,25 @@
-# StealJS
+# CourierJS
 
-[![Build Status](https://travis-ci.org/bitovi/steal.svg?branch=master)](https://travis-ci.org/bitovi/steal)
+#[![Build Status](https://travis-ci.org/robertdmunn/courier.svg?branch=master)](https://travis-ci.org/bitovi/courier)
 
-StealJS is an ES6, AMD, CommonJS, and steal client-side loader. Combined with 
-[steal-tools](https://github.com/bitovi/steal-tools/tree/systemjs), its designed
-to simplify dependency management while being extremely powerful and flexible.
+CourierJS is an ES6, AMD, CommonJS, and courier client-side loader. 
 
-Steal builds from [SystemJS](https://github.com/systemjs/systemjs) and 
+#Combined with 
+#[courier-tools](https://github.com/bitovi/courier-tools/tree/systemjs), its designed
+#to simplify dependency management while being extremely powerful and flexible.
+
+Courier is a fork of [CourierJS](https://github.com/bitovi/courier), which builds from [SystemJS](https://github.com/systemjs/systemjs) and 
 [ES6ModuleLoader](https://github.com/ModuleLoader/es6-module-loader) and adds:
 
  - global configuration
  - css and less support
  - plugin extension mapping _(upcoming)_
- - production builds with [steal-tools](https://github.com/bitovi/steal-tools)
+ - production builds with [courier-tools](https://github.com/bitovi/courier-tools)
 
 But it's __killer__ feature - progressively loaded apps that balance caching and the 
 number of script requests.
 
-StealJS supports IE8+ with AMD, CommonJS, and Steal syntax and IE9+ for ES6 syntax.
+CourierJS supports IE8+ with AMD, CommonJS, and Courier syntax and IE9+ for ES6 syntax.
 
 ## Use
 
@@ -25,25 +27,25 @@ StealJS supports IE8+ with AMD, CommonJS, and Steal syntax and IE9+ for ES6 synt
 
 Lets see how to get a basic app up and running.
 
-1. Install StealJS:
+1. Install CourierJS:
   
   With [Bower](http://bower.io/)
 
-  > bower install steal#0.1.1 -S
+  > bower install courier#0.1.1 -S
 
-2. Create `stealconfig.js`:
+2. Create `courierconfig.js`:
 
-  Add a `stealconfig.js` file directly within your "root" folder. Your
+  Add a `courierconfig.js` file directly within your "root" folder. Your
   "root" folder should contain all your static scripts and resources.
   
-  By default, steal will assume `stealconfig.js` is a sibling of `bower_components`:
+  By default, courier will assume `courierconfig.js` is a sibling of `bower_components`:
 
       ROOT/
         bower.json
         bower_components
-        stealconfig.js
+        courierconfig.js
     
-  `stealconfig.js` will be loaded by every page in your project.  It is used to configure
+  `courierconfig.js` will be loaded by every page in your project.  It is used to configure
   the location to modules and other behavior.    
     
 3. Add `main` module:
@@ -53,7 +55,7 @@ Lets see how to get a basic app up and running.
       ROOT/
         bower.json
         bower_components
-        stealconfig.js
+        courierconfig.js
         main.js
       
   Within `main.js` add:
@@ -64,13 +66,13 @@ Lets see how to get a basic app up and running.
  
 4. Create an HTML page:
 
-  Create an `index.html` page that specifies the location of `stealconfig.js` and
+  Create an `index.html` page that specifies the location of `courierconfig.js` and
   the `main` module name:
   
       ROOT/
         bower.json
         bower_components
-        stealconfig.js
+        courierconfig.js
         index.html
 
   Within `index.html` add:
@@ -79,14 +81,14 @@ Lets see how to get a basic app up and running.
   <!DOCTYPE html>
   <html>
     <body>
-      <script src='./bower_components/steal/steal.js'
-              data-config='stealconfig.js'
+      <script src='./bower_components/courier/courier.js'
+              data-config='courierconfig.js'
               data-main='main'></script>
     </body>
   </html>
   ```
   
-  To build this app, read [StealTools](https://github.com/bitovi/steal-tools/tree/systemjs) docs.
+  To build this app, read [CourierTools](https://github.com/bitovi/courier-tools/tree/systemjs) docs.
 
 
 ### Adding jQuery
@@ -99,7 +101,7 @@ Lets see how to get a basic app up and running.
 
 2. Configure jQuery's path and export:
 
-   Add a config for `System.paths` to `stealconfig.js` to tell steal where to find
+   Add a config for `System.paths` to `courierconfig.js` to tell courier where to find
    jQuery. Add a config for `System.meta` to tell SystemJS that jQuery exports the "jQuery"
    variable.
    

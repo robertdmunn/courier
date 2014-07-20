@@ -1,17 +1,17 @@
 {
-  "name": "steal",
+  "name": "courier",
   "description": "Gets JavaScript.",
   "version": "0.2.2",
   "author": {
-    "name": "Bitovi",
-    "email": "contact@bitovi.com",
-    "web": "http://bitovi.com/"
+    "name": "Robert Munn",
+    "email": "robert.d.munn@gmail.com",
+    "web": ""
   },
   "scripts": {
     "test": "grunt test --stack"
   },
   "dependencies": {
-    "systemjs": "git://github.com/bitovi/systemjs.git#77d972c83018fdcbb29de68053d4f705fae8272e"
+    "systemjs": "git://github.com/robertdmunn/systemjs.git#77d972c83018fdcbb29de68053d4f705fae8272e"
   },
   "devDependencies": {
     "bower": "1.2.8",
@@ -23,7 +23,7 @@
     "grunt-contrib-uglify": "~0.2.2",
     "grunt-contrib-watch": "~0.3.0",
     "grunt-release": "^0.7.0",
-    "testee": "git://github.com/bitovi/testee.js.git#master"
+    "testee": "git://github.com/robertdmunn/testee.js.git#master"
   },
   "licenses": [
     {

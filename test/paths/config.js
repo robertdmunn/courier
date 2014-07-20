@@ -1,6 +1,6 @@
-steal.config({
+courier.config({
 	paths: {
-		"steal/dev/*" : "../../dev/*.js",
+		"courier/dev/*" : "../../dev/*.js",
 		"bar/*": "../paths/*.js"
 	}
 });

@@ -1,7 +1,7 @@
-steal(function(){
+courier(function(){
 	
 	if(typeof window !== "undefined" && window.QUnit) {
-		QUnit.deepEqual(steal.config("bundle"),["foo"], "read back bundle");
+		QUnit.deepEqual(courier.config("bundle"),["foo"], "read back bundle");
 		
 		QUnit.start();
 		removeMyself();

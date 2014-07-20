@@ -1,17 +1,17 @@
 /*global  window: false, console: true, opera: true */
 //
 /**
- * @property steal.dev
- * @parent stealjs
+ * @property courier.dev
+ * @parent courierjs
  * 
  * Provides helper functions for development that get removed when put in production mode.
- * This means you can leave <code>steal.dev.log("hello world")</code> in your code and it
+ * This means you can leave <code>courier.dev.log("hello world")</code> in your code and it
  * will get removed in prodution.
  *
  * ## Examples
  * 
- *     steal.dev.log("Something is happening");
- *     steal.dev.warn("Something bad is happening");
+ *     courier.dev.log("Something is happening");
+ *     courier.dev.warn("Something bad is happening");
  * 
  */
 (function(){
@@ -31,13 +31,13 @@ var dev = {
 	},
 	isHappyName: function( name ) {
 		//make sure names are close to the current path
-		var path = steal.cur().path.replace(/\.[^$]+$/, "").split('/'),
+		var path = courier.cur().path.replace(/\.[^$]+$/, "").split('/'),
 			//make sure parts in name match
 			parts = name.split('.');
 		
 		for ( var i = 0; i < parts.length && path.length; i++ ) {
 			if (path[i] && parts[i].toLowerCase() != path[i] && this.underscore(parts[i]) != path[i] && this.underscore(parts[i]) != path[i].replace(/_controller/, "") ) {
-				this.warn("Are you sure " + name + " belongs in " + steal.cur().path);
+				this.warn("Are you sure " + name + " belongs in " + courier.cur().path);
 			}
 		}
 		
@@ -46,54 +46,54 @@ var dev = {
 
 	logLevel : 0,
 	/**
-	 * @function steal.dev.warn
-	 * @parent steal.dev
+	 * @function courier.dev.warn
+	 * @parent courier.dev
 	 * 
-	 * @signature `steal.dev.warn(out)`
+	 * @signature `courier.dev.warn(out)`
 	 * @param {String} out the message
 	 *
 	 * @body
 	 * Adds a warning message to the console.
 	 * 
-	 *     steal.dev.warn("something evil");
+	 *     courier.dev.warn("something evil");
 	 * 
 	 */
 	warn: function( out ) {
-		var ll = steal.config().logLevel;
+		var ll = courier.config().logLevel;
 		if(ll < 2){
-			Array.prototype.unshift.call(arguments, 'steal.js WARN:');
+			Array.prototype.unshift.call(arguments, 'courier.js WARN:');
 			if ( window.console && console.warn ) {
 				this._logger( "warn", Array.prototype.slice.call(arguments) );
 			} else if ( window.console && console.log ) {
 				this._logger( "log", Array.prototype.slice.call(arguments) );
 			} else if ( window.opera && window.opera.postError ) {
-				opera.postError("steal.js WARNING: " + out);
+				opera.postError("courier.js WARNING: " + out);
 			}
 		}
 		
 	},
 	/**
-	 * @function steal.dev.log
-	 * @parent steal.dev
+	 * @function courier.dev.log
+	 * @parent courier.dev
 	 * 
-	 * @signature `steal.dev.log(out)`
+	 * @signature `courier.dev.log(out)`
 	 * @param {String} out the message
 	 *
 	 * @body
 	 * Adds a message to the console.
 	 * 
-	 *     steal.dev.log("hi");
+	 *     courier.dev.log("hi");
 	 * 
 	 */
 	log: function( out ) {
-		var ll = steal.config().logLevel;
+		var ll = courier.config().logLevel;
 		if (ll < 1) {
 			if (window.console && console.log) {
-				Array.prototype.unshift.call(arguments, 'steal.js INFO:');
+				Array.prototype.unshift.call(arguments, 'courier.js INFO:');
 				this._logger( "log", Array.prototype.slice.call(arguments) );
 			}
 			else if (window.opera && window.opera.postError) {
-				opera.postError("steal.js INFO: " + out);
+				opera.postError("courier.js INFO: " + out);
 			}
 		}
 	},
@@ -105,8 +105,8 @@ var dev = {
 		}
 	} 
 };
-	if(typeof steal !== "undefined") {
-		steal.dev= dev;
+	if(typeof courier !== "undefined") {
+		courier.dev= dev;
 	} else {
 		module.exports = dev;
 	}

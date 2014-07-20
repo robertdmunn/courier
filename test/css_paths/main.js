@@ -1,4 +1,4 @@
-import 'css_paths/folder/main.less!steal/less';
+import 'css_paths/folder/main.less!courier/less';
 import 'css_paths/folder/main.css!';
 
 if(typeof window !== "undefined" && window.QUnit) {

@@ -1,3 +1,3 @@
-steal("template.plug!plug", function(template){
+courier("template.plug!plug", function(template){
 	window.PLUGTEXT = template();
 });

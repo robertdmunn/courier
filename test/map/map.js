@@ -1,4 +1,4 @@
-steal("mapd", function(m){
+courier("mapd", function(m){
 	if(window.QUnit) {
 		QUnit.ok(m, "got map");
 		QUnit.equal(m.name, "map", "module name is right");

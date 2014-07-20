@@ -1,3 +1,3 @@
-steal(function(){
+courier(function(){
 	return {name: "pathed"};
 });

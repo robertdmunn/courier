@@ -1,4 +1,4 @@
-steal(function(){
+courier(function(){
 	return function(){
 		return "widget"
 	};

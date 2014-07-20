@@ -1,24 +1,24 @@
 /*
-  SystemJS Steal Format
-  Provides the Steal module format definition.
+  SystemJS Courier Format
+  Provides the Courier module format definition.
 */
-function addSteal(loader) {
+function addCourier(loader) {
 
-  // Steal Module Format Detection RegEx
-  // steal(module, ...)
-  var stealRegEx = /(?:^\s*|[}{\(\);,\n\?\&]\s*)steal\s*\(\s*((?:"[^"]+"\s*,|'[^']+'\s*,\s*)*)/;
+  // Courier Module Format Detection RegEx
+  // courier(module, ...)
+  var courierRegEx = /(?:^\s*|[}{\(\);,\n\?\&]\s*)courier\s*\(\s*((?:"[^"]+"\s*,|'[^']+'\s*,\s*)*)/;
 
   // What we stole.
-  var stealInstantiateResult;
+  var courierInstantiateResult;
   
-  function createSteal(loader) {
-    stealInstantiateResult = null;
+  function createCourier(loader) {
+    courierInstantiateResult = null;
 
     // ensure no NodeJS environment detection
     loader.global.module = undefined;
     loader.global.exports = undefined;
 
-    function steal() {
+    function courier() {
       var deps = [];
       var factory;
       
@@ -36,7 +36,7 @@ function addSteal(loader) {
         })(factory);
       }
 
-      stealInstantiateResult = {
+      courierInstantiateResult = {
         deps: deps,
         execute: function(require, exports, moduleName) {
 
@@ -54,31 +54,31 @@ function addSteal(loader) {
       };
     }
 
-    loader.global.steal = steal;
+    loader.global.courier = courier;
   }
 
   var loaderInstantiate = loader.instantiate;
   loader.instantiate = function(load) {
     var loader = this;
 
-    if (load.metadata.format === 'steal' || !load.metadata.format && load.source.match(stealRegEx)) {
-      load.metadata.format = 'steal';
+    if (load.metadata.format === 'courier' || !load.metadata.format && load.source.match(courierRegEx)) {
+      load.metadata.format = 'courier';
 
-      var oldSteal = loader.global.steal;
+      var oldCourier = loader.global.courier;
 
-      createSteal(loader);
+      createCourier(loader);
 
       loader.__exec(load);
 
-      loader.global.steal = oldSteal;
+      loader.global.courier = oldCourier;
 
-      if (!stealInstantiateResult) {
-        throw "Steal module " + load.name + " did not call steal";
+      if (!courierInstantiateResult) {
+        throw "Courier module " + load.name + " did not call courier";
       }
 
-      if (stealInstantiateResult) {
-        load.metadata.deps = load.metadata.deps ? load.metadata.deps.concat(stealInstantiateResult.deps) : stealInstantiateResult.deps;
-        load.metadata.execute = stealInstantiateResult.execute;
+      if (courierInstantiateResult) {
+        load.metadata.deps = load.metadata.deps ? load.metadata.deps.concat(courierInstantiateResult.deps) : courierInstantiateResult.deps;
+        load.metadata.execute = courierInstantiateResult.execute;
       }
     }
     return loaderInstantiate.call(loader, load);
@@ -88,5 +88,5 @@ function addSteal(loader) {
 }
 
 if (typeof System !== "undefined") {
-  addSteal(System);
+  addCourier(System);
 }

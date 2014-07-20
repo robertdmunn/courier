@@ -1,8 +1,8 @@
 /*bundlesConfig*/
-System.bundles = {"bundles/bar":["bar"],"bundles/bar.css!":["bar.css!steal/css"]};
-/*stealconfig*/
+System.bundles = {"bundles/bar":["bar"],"bundles/bar.css!":["bar.css!courier/css"]};
+/*courierconfig*/
 
-define("steal/css",[], function(){
+define("courier/css",[], function(){
 	return {
 		instantiate: function(load) {
 			load.metadata.format = "css";

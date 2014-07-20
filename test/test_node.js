@@ -1,18 +1,18 @@
-var steal = require('../main');
+var courier = require('../main');
 
 
-var localSteal =  steal.clone( steal.addSteal( steal.System.clone() ) );
+var localCourier =  courier.clone( courier.addCourier( courier.System.clone() ) );
 
-global.steal = localSteal;
-global.System = localSteal.System;
+global.courier = localCourier;
+global.System = localCourier.System;
 
 
-localSteal.config({
+localCourier.config({
 	config: __dirname+"/node_test_plugins/config.js",
 	main: "main"
 });
 
-localSteal.startup().then(function(){
+localCourier.startup().then(function(){
 	console.log("worked");
 },function(e){
 	console.log(e);

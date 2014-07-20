@@ -1,3 +1,3 @@
-steal("./steal-style.css!", function(){
+courier("./courier-style.css!", function(){
 	return {};
 });

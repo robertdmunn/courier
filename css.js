@@ -1,4 +1,4 @@
-if( steal.config('env') === 'production' ) {
+if( courier.config('env') === 'production' ) {
 	exports.fetch = function(load) {
 		// return a thenable for fetching (as per specification)
 		// alternatively return new Promise(function(resolve, reject) { ... })
@@ -22,7 +22,7 @@ if( steal.config('env') === 'production' ) {
 
 				// make source load relative to the current page
 				source = source.replace(/url\(['"]?([^'"\)]*)['"]?\)/g, function( whole, part ) {
-					return "url(" + steal.joinURIs( load.address, part) + ")";
+					return "url(" + courier.joinURIs( load.address, part) + ")";
 				});
 				style.type = 'text/css';
 

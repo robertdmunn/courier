@@ -18,7 +18,7 @@
 			// Split on comma to get startFile and env
 			parts = query.split(",");
 
-			if (src.indexOf("steal.production") > -1) {
+			if (src.indexOf("courier.production") > -1) {
 				options.env = "production";
 			}
 
@@ -40,15 +40,15 @@
 			parts = src.split("/");
 			var lastPart = parts.pop();
 
-			if(lastPart.indexOf("steal") === 0 && !System.paths["steal/dev"]) {
+			if(lastPart.indexOf("courier") === 0 && !System.paths["courier/dev"]) {
 				options.paths = {
-					"steal/*": parts.join("/")+"/*.js",
+					"courier/*": parts.join("/")+"/*.js",
 					"less" :  parts.join("/")+"/"+LESS_ENGINE+".js",
 					"@traceur": parts.slice(0,-1).join("/")+"/traceur/traceur.js",
 				};
 			}
 
-			if ( last(parts) === "steal" ) {
+			if ( last(parts) === "courier" ) {
 				parts.pop();
 				if ( last(parts) === "bower_components" ) {
 					parts.pop();
@@ -83,11 +83,11 @@
 		return options;
 	};
 
-	var getOptionsFromStealLocation = function(){
+	var getOptionsFromCourierLocation = function(){
 		var options = {};
-		if(typeof __dirname === "string" && !System.paths["steal/dev"]) {
+		if(typeof __dirname === "string" && !System.paths["courier/dev"]) {
 			options.paths = {
-				"steal/*": __dirname+"/*.js",
+				"courier/*": __dirname+"/*.js",
 				"@traceur": __dirname.split("/").slice(0,-1).join("/")+"/traceur/traceur.js"
 			};
 		}
@@ -99,29 +99,29 @@
 		return options;
 	};
 
-	steal.startup = function(config){
+	courier.startup = function(config){
 
 		// get options from the script tag
 		if(global.document) {
 			var urlOptions = getScriptOptions();
 		} else {
-			var urlOptions = getOptionsFromStealLocation();
+			var urlOptions = getOptionsFromCourierLocation();
 		}
 
 		extend(System.ext,{
-			css: 'steal/css',
-			less: 'steal/less'
+			css: 'courier/css',
+			less: 'courier/less'
 		});
 
 		// B: DO THINGS WITH OPTIONS
 		// CALCULATE CURRENT LOCATION OF THINGS ...
-		steal.config(urlOptions);
+		courier.config(urlOptions);
 		if(config){
-			steal.config(config);
+			courier.config(config);
 		}
 
 
-		var options = steal.config();
+		var options = courier.config();
 		// Read the env now because we can't overwrite everything yet
 
 		// mark things that have already been loaded
@@ -129,51 +129,51 @@
 			System.register(stel,[],function(){});
 		});
 
-		// immediate steals we do
-		var steals = [];
+		// immediate couriers we do
+		var couriers = [];
 
 		// add start files first
 		if ( options.startIds ) {
 			/// this can be a string or an array
-			steals.push.apply(steals, isString(options.startIds) ? [options.startIds] : options.startIds);
-			options.startIds = steals.slice(0);
+			couriers.push.apply(couriers, isString(options.startIds) ? [options.startIds] : options.startIds);
+			options.startIds = couriers.slice(0);
 		}
 
 		// we only load things with force = true
-		if ( options.env == "production" && steal.System.main ) {
+		if ( options.env == "production" && courier.System.main ) {
 
-			return appDeferred = steal.System.import(steal.System.main)["catch"](function(e){
+			return appDeferred = courier.System.import(courier.System.main)["catch"](function(e){
 				console.log(e);
 			});
 
 		} else if(options.env == "development"){
 
-			configDeferred = steal.System.import("stealconfig");
+			configDeferred = courier.System.import("courierconfig");
 
 			devDeferred = configDeferred.then(function(){
 				// If a configuration was passed to startup we'll use that to overwrite
-				// what was loaded in stealconfig.js
+				// what was loaded in courierconfig.js
 				// This means we call it twice, but that's ok
 				if(config) {
-					steal.config(config);
+					courier.config(config);
 				}
 
-				return steal.System.import("steal/dev");
+				return courier.System.import("courier/dev");
 			},function(e){
-				console.log("steal - error loading stealconfig.",e);
-				return steal.System.import("steal/dev");
+				console.log("courier - error loading courierconfig.",e);
+				return courier.System.import("courier/dev");
 			});
 
 			appDeferred = devDeferred.then(function(){
 
 				// if there's a main, get it, otherwise, we are just loading
 				// the config.
-				return steal.System.main ? 
-					System.import(steal.System.main):
+				return courier.System.main ? 
+					System.import(courier.System.main):
 					configDeferred;
 			}).then(function(){
-				if(steal.dev) {
-					steal.dev.log("app loaded successfully")
+				if(courier.dev) {
+					courier.dev.log("app loaded successfully")
 				}
 			}, function(error){
 				console.log("error",error,  error.stack);
@@ -182,5 +182,5 @@
 		}
 	};
 
-	return steal;
+	return courier;
 

@@ -1,4 +1,4 @@
-steal("./bar", function(bar){
+courier("./bar", function(bar){
 	return {
 	  bar: bar,
 	  name: "module.js"

@@ -1,19 +1,19 @@
 	if (typeof window != 'undefined') {
-		var oldSteal = window.steal;
-		window.steal = makeSteal(System);
-		window.steal.startup(oldSteal && typeof oldSteal == 'object' && oldSteal  );
-		window.steal.addSteal = addSteal;
+		var oldCourier = window.courier;
+		window.courier = makeCourier(System);
+		window.courier.startup(oldCourier && typeof oldCourier == 'object' && oldCourier  );
+		window.courier.addCourier = addCourier;
 		
 	} else {
     	
 		require('systemjs');
 			
-		global.steal = makeSteal(System);
-		global.steal.System = System;
-		global.steal.dev = require("./dev.js");
-		steal.clone = makeSteal;
-		module.exports = global.steal;
-		global.steal.addSteal = addSteal;
+		global.courier = makeCourier(System);
+		global.courier.System = System;
+		global.courier.dev = require("./dev.js");
+		courier.clone = makeCourier;
+		module.exports = global.courier;
+		global.courier.addCourier = addCourier;
 	}
     
     

@@ -1,6 +1,6 @@
 {
-  "name": "steal",
-  "main": "steal.js",
+  "name": "courier",
+  "main": "courier.js",
   "ignore": ["test","src","core"],
   "version": "0.2.2",
   "devDependencies": {

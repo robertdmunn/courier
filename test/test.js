@@ -1,4 +1,4 @@
-module("steal via system import");
+module("courier via system import");
 
 QUnit.config.testTimeout = 30000;
 
@@ -22,7 +22,7 @@ QUnit.config.testTimeout = 30000;
 			</script>";
 
 	};
-	var makeStealHTML = function(url, src, code){
+	var makeCourierHTML = function(url, src, code){
 		return "<!doctype html>\
 			<html>\
 				<head>" + makePassQUnitHTML() +"\n"+
@@ -44,45 +44,45 @@ QUnit.config.testTimeout = 30000;
 		iframe.src = src;
 	};
 
-	asyncTest('steal basics', function(){
+	asyncTest('courier basics', function(){
 		System['import']('tests/module').then(function(m){
 			equal(m.name,"module.js", "module returned" );
 			equal(m.bar.name, "bar", "module.js was not able to get bar");
 			start();
 		}, function(err){
-			ok(false, "steal not loaded");
+			ok(false, "courier not loaded");
 			start();
 		});
 	});
 
-	asyncTest("steal's normalize", function(){
+	asyncTest("courier's normalize", function(){
 		System['import']('tests/mod/mod').then(function(m){
 			equal(m.name,"mod", "mod returned" );
 			equal(m.module.bar.name, "bar", "module.js was able to get bar");
 			equal(m.widget(), "widget", "got a function");
 			start();
 		}, function(){
-			ok(false, "steal not loaded");
+			ok(false, "courier not loaded");
 			start();
 		});
 	});
 
-	asyncTest("steal's normalize with a plugin", function(){
+	asyncTest("courier's normalize with a plugin", function(){
 		System.instantiate({
 			name: "foo",
-			metadata: {format: "steal"},
-			source: 'steal("foo/bar!foo/bar", function(){})'
+			metadata: {format: "courier"},
+			source: 'courier("foo/bar!foo/bar", function(){})'
 		}).then(function(result){
 			equal(result.deps[0], "foo/bar/bar!foo/bar", "normalize fixed part before !");
 			start();
 		});
 	});
 
-	asyncTest("steal's normalize with plugin only the bang", function(){
+	asyncTest("courier's normalize with plugin only the bang", function(){
 		System.instantiate({
 			name: "foobar",
-			metadata: {format: "steal"},
-			source: 'steal("./rdfa.stache!", function(){})'
+			metadata: {format: "courier"},
+			source: 'courier("./rdfa.stache!", function(){})'
 		}).then(function(result){
 			System.normalize(result.deps[0], "foo","http://abc.com").then(function(result){
 				equal(result, "rdfa.stache!stache", "normalize fixed part before !");
@@ -92,28 +92,28 @@ QUnit.config.testTimeout = 30000;
 	});
 
 
-module("steal via html");
+module("courier via html");
 
 	asyncTest("basics", function(){
 		makeIframe("basics/basics.html");
 	});
 
 	asyncTest("basics with generated html", function(){
-		writeIframe(makeStealHTML(
+		writeIframe(makeCourierHTML(
 			"basics/basics.html",
-			'src="../../steal.js?basics" data-config="../config.js"'));
+			'src="../../courier.js?basics" data-config="../config.js"'));
 	});
 
 	asyncTest("default config path", function(){
-		writeIframe(makeStealHTML(
+		writeIframe(makeCourierHTML(
 			"basics/basics.html",
-			'src="../steal.js?basics"'));
+			'src="../courier.js?basics"'));
 	});
 
 	asyncTest("default config path", function(){
-		writeIframe(makeStealHTML(
+		writeIframe(makeCourierHTML(
 			"basics/basics.html",
-			'src="../steal/steal.js?basics"'));
+			'src="../courier/courier.js?basics"'));
 	});
 
 	asyncTest("inline", function(){
@@ -121,9 +121,9 @@ module("steal via html");
 	});
 
 	asyncTest("default bower_components config path", function(){
-		writeIframe(makeStealHTML(
+		writeIframe(makeCourierHTML(
 			"basics/basics.html",
-			'src="../bower_components/steal/steal.js?basics"'));
+			'src="../bower_components/courier/courier.js?basics"'));
 	});
 
 	asyncTest("default bower_components without config still works", function(){
@@ -135,9 +135,9 @@ module("steal via html");
 	});
 
 	asyncTest("read config", function(){
-		writeIframe(makeStealHTML(
+		writeIframe(makeCourierHTML(
 			"basics/basics.html",
-			'src="../../steal.js?configed" data-config="../config.js"'));
+			'src="../../courier.js?configed" data-config="../config.js"'));
 	});
 
 	asyncTest("compat - product bundle works", function(){
@@ -161,9 +161,9 @@ module("steal via html");
 	});
 
 	asyncTest("Using path's * qualifier", function(){
-		writeIframe(makeStealHTML(
+		writeIframe(makeCourierHTML(
 			"basics/basics.html",
-			'src="../steal.js?../paths" data-config="../paths/config.js"'));
+			'src="../courier.js?../paths" data-config="../paths/config.js"'));
 	});
 
 	asyncTest("url paths in css work", function(){
@@ -178,8 +178,8 @@ module("steal via html");
 		makeIframe("forward_slash/site.html");
 	});
 
-	asyncTest("a steal object in the page before steal.js is loaded will be used for configuration",function(){
-		makeIframe("configed/steal_object.html");
+	asyncTest("a courier object in the page before courier.js is loaded will be used for configuration",function(){
+		makeIframe("configed/courier_object.html");
 	});
 
 })();

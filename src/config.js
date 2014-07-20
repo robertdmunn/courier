@@ -2,7 +2,7 @@
 		env: "development"
 	};
 	
-	steal.config = function(data, value){
+	courier.config = function(data, value){
 		if(isString(data)) {
 			var name = data;
 			if(arguments.length >= 2) {
@@ -46,13 +46,13 @@
 	var getSetToSystem = function(prop){
 		return {
 			get: function(){
-				return steal.System[prop];
+				return courier.System[prop];
 			},
 			set: function(val){
-				if(typeof val === "object" && typeof steal.System[prop] === "object") {
-					steal.System[prop] = extend(steal.System[prop] || {},val || {});
+				if(typeof val === "object" && typeof courier.System[prop] === "object") {
+					courier.System[prop] = extend(courier.System[prop] || {},val || {});
 				} else {
-					steal.System[prop] = val;
+					courier.System[prop] = val;
 				}
 			}
 		};
@@ -71,7 +71,7 @@
 			set: function(val){
 				var name = filename(val),
 					root = dir(val);
-				System.paths["stealconfig"] = name;
+				System.paths["courierconfig"] = name;
 				configSpecial.root.set( (root === val ? "." : root)  +"/");
 			}
 		},

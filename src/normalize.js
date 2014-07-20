@@ -18,9 +18,9 @@
 	
 	var normalize = function(name, loader){
 
-		// Detech if this name contains a plugin part like: app.less!steal/less
+		// Detech if this name contains a plugin part like: app.less!courier/less
 		// and catch the plugin name so that when it is normalized we do not perform
-		// Steal's normalization against it.
+		// Courier's normalization against it.
 		var pluginIndex = name.lastIndexOf('!');
 		var pluginPart = "";
 		if (pluginIndex != -1) {

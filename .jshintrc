@@ -1,6 +1,6 @@
 {
   "globals": {
-    "steal": true,
+    "courier": true,
     "QUnit": true,
     "test": true,
     "asyncTest": true,

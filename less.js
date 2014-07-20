@@ -1,4 +1,4 @@
-var css = require("steal/css");
+var css = require("courier/css");
 var lessEngine = require("less");
 
 exports.instantiate = css.instantiate;
