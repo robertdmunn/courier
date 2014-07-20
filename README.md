@@ -1,14 +1,12 @@
 # CourierJS
 
-#[![Build Status](https://travis-ci.org/robertdmunn/courier.svg?branch=master)](https://travis-ci.org/bitovi/courier)
-
 CourierJS is an ES6, AMD, CommonJS, and courier client-side loader. 
 
 #Combined with 
 #[courier-tools](https://github.com/bitovi/courier-tools/tree/systemjs), its designed
 #to simplify dependency management while being extremely powerful and flexible.
 
-Courier is a fork of [CourierJS](https://github.com/bitovi/courier), which builds from [SystemJS](https://github.com/systemjs/systemjs) and 
+Courier is a fork of [StealJS](https://github.com/bitovi/steal), which builds from [SystemJS](https://github.com/systemjs/systemjs) and 
 [ES6ModuleLoader](https://github.com/ModuleLoader/es6-module-loader) and adds:
 
  - global configuration
