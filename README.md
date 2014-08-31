@@ -11,7 +11,6 @@ Courier is a fork of [StealJS](https://github.com/bitovi/steal), which builds fr
 CourierJS supports IE8+ with AMD, CommonJS, and IE9+ for ES6 syntax.
 
 #Why Courier?
-Because it isn't stealing.
 
 ## Use
 
